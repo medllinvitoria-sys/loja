@@ -54,15 +54,15 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `bd loja_medllin`.`diente`
+-- Table `bd loja_medllin`.`cliente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd loja_medllin`.`diente` (
-  `id_diente` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `bd loja_medllin`.`cliente` (
+  `id_cliente` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NULL,
   `cpf` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
   `telefone` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_diente`))
+  PRIMARY KEY (`id_cliente`))
 ENGINE = InnoDB;
 
 
@@ -73,18 +73,18 @@ CREATE TABLE IF NOT EXISTS `bd loja_medllin`.`venda` (
   `id-venda` INT NOT NULL AUTO_INCREMENT,
   `data` TIMESTAMP NULL,
   `id_usuario` INT NOT NULL,
-  `id_diente` INT NOT NULL,
+  `id_cliente` INT NOT NULL,
   PRIMARY KEY (`id-venda`),
   INDEX `fk_venda_usuario_idx` (`id_usuario` ASC) VISIBLE,
-  INDEX `fk_venda_diente1_idx` (`id_diente` ASC) VISIBLE,
+  INDEX `fk_venda_cliente1_idx` (`id_cliente` ASC) VISIBLE,
   CONSTRAINT `fk_venda_usuario`
     FOREIGN KEY (`id_usuario`)
     REFERENCES `bd loja_medllin`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_venda_diente1`
-    FOREIGN KEY (`id_diente`)
-    REFERENCES `bd loja_medllin`.`diente` (`id_diente`)
+  CONSTRAINT `fk_venda_cliente1`
+    FOREIGN KEY (`id_cliente`)
+    REFERENCES `bd loja_medllin`.`cliente` (`id_cliente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

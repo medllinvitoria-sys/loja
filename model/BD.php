@@ -2,9 +2,9 @@
     class BD {
         public static function getConexao() {
             $conn = new PDO(
-                'mysql:host=localhost;dbname=bd_estoque', 
+                'mysql:host=localhost;dbname=bd loja_medllin', 
                 'root', 
-                'qwe123'
+                'root'
             );
 
             return $conn;

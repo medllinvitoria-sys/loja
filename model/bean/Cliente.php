@@ -9,7 +9,7 @@
 
                 // Métodos
         public function getId_cliente() {
-            return $this->getid_cliente;
+            return $this->id_cliente;
         }
 
         public function setId($id_cliente) {
@@ -20,7 +20,7 @@
             return $this->nome;
         }
 
-        public function SetNome($nome) {
+        public function setNome($nome) {
             $this->nome = $nome;
         }
 
@@ -28,7 +28,7 @@
             return $this->cpf;
         }
 
-        public function SetCpf($cpf) {
+        public function setCpf($cpf) {
             $this->cpf = $cpf;
         }
 
