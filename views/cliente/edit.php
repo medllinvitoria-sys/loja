@@ -1,7 +1,9 @@
 <?php
+    // Buscar as informações do fornecedor para atualizar
     require "../../autoload.php";
 
     $dao = new ClienteDAO();
+    $cliente = $dao->find($_GET['id']);
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +21,6 @@
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <meta name="theme-color" content="#712cf9">
     <link href="../../css/dashboard.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -262,35 +263,30 @@
             <?php include "../../sidebar.html" ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="my-4">
-                    <h2>Clientes</h2>
-                    <a href="create.php">Novo Cliente</a>
-                    <table class="table table-hover">
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Cpf</th>
-                            <th>E-mail</th>
-                            <th>Telefone</th>
-                            <th>Ações</th>
-                        </tr>
-                        <?php foreach($dao->read() as $cliente) : ?>
-                            <tr>
-                                <td><?= $cliente->getId_cliente() ?></td>
-                                <td><?= $cliente->getNome() ?></td>
-                                <td><?= $cliente->getCpf() ?></td>
-                                <td><?= $cliente->getEmail() ?></td>
-                                <td><?= $cliente->getTelefone() ?></td>
-                                <td>
-                                    <a href="edit.php?id=<?= $cliente->getId_cliente() ?>" title="Editar">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <a class="link link-danger" href="destroy.php?id=<?= $cliente->getId_cliente() ?>" title="Excluir">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    </table>
+                    <h2>Cadastrar Cliente</h2>
+                    <form action="update.php" method="post">
+                        <p class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" class="form-control" value="<?= $cliente->getNome() ?>">
+                        </p>
+                        <p class="form-group">
+                            <label for="cpf">Cpf</label>
+                            <input type="text" name="cpf" class="form-control" value="<?= $cliente->getCpf() ?>">
+                        </p>
+                        <p class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="text" name="email" class="form-control" value="<?= $cliente->getEmail() ?>">
+                        </p>
+                        <p class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="text" name="telefone" class="form-control" value="<?= $cliente->getTelefone() ?>">
+                        </p>
+                        <input type="hidden" name="id" value="<?= $cliente->getId_cliente() ?>">
+                        <p class="form-group">
+                            <input type="reset" value="Limpar" class="btn btn-default">
+                            <input type="submit" value="Salvar" class="btn btn-primary">
+                        </p>
+                    </form>
                 </div>
             </main>
         </div>

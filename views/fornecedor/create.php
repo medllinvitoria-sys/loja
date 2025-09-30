@@ -258,11 +258,11 @@
                     <h2>Cadastrar Fornecedor</h2>
                     <form action="insert.php" method="post">
                         <p class="form-group">
-                            <label for="razao_social">Razão Social</label>
-                            <input type="text" name="razao_social" class="form-control">
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" class="form-control">
                         </p>
                         <p class="form-group">
-                            <label for="cnpj">CNPJ</label>
+                            <label for="c">CNPJ</label>
                             <input type="text" name="cnpj" class="form-control">
                         </p>
                         <p class="form-group">

@@ -19,6 +19,7 @@
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <meta name="theme-color" content="#712cf9">
     <link href="../../css/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -270,6 +271,7 @@
                             <th>CNPJ</th>
                             <th>E-mail</th>
                             <th>Telefone</th>
+                            <th>Ações</th>
                         </tr>
                         <?php foreach($dao->read() as $fornecedor) : ?>
                             <tr>
@@ -278,6 +280,14 @@
                                 <td><?= $fornecedor->getCNPJ() ?></td>
                                 <td><?= $fornecedor->getEmail() ?></td>
                                 <td><?= $fornecedor->getTelefone() ?></td>
+                                <td>
+                                    <a href="edit.php?id=<?= $fornecedor->getId() ?>" title="Editar">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a class="link link-danger" href="destroy.php?id=<?= $fornecedor->getId() ?>" title="Excluir">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                         <?php endforeach ?>
                     </table>
